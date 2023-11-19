@@ -1,3 +1,6 @@
+from typing import Any
+from django import http
+from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -25,12 +28,18 @@ class AddPostView (FormView):
   form_class = PostForm
   success_url = "/"
 
+  def dispatch(self, request, *args, **kwargs) -> HttpResponse:
+    self.request = request
+    return super().dispatch(request, *args, **kwargs)
+
   def form_valid(self, form) -> HttpResponse:
     # create new post
     new_object = Post.objects.create(
       text=form.cleaned_data["text"],
       image=form.cleaned_data["image"]
     )
+
+    messages.add_message(self.request,messages.SUCCESS,"You post was success")
     return super().form_valid(form)
 
 
