@@ -2,5 +2,8 @@
 {% block title %} Dynamis title here {% endblock title%} 
 
 {%block body %} 
-  <h1>{{thing}}</h1>
+  {% for post in posts %}
+    <h1>{{post}}</h1>
+    <hr>
+  {% endfor %}
 {% endblock body%}
