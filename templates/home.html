@@ -1,9 +1,15 @@
 {% extends "base.html"%} 
 {% block title %} Dynamis title here {% endblock title%} 
+{% load thumbnail %}
+
 
 {%block body %} 
   {% for post in posts %}
-    <h1>{{post}}</h1>
+    <h2>{{post.text}}</h2>
+    
+    {% thumbnail post.image "300x300" crop="center" as im %}
+      <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
     <hr>
   {% endfor %}
 {% endblock body%}
