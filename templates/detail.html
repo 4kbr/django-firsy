@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Detail view
+{% endblock title %}
+
+{% block body %}
+  <h3>Text:</h3>
+  {{object.text}}
+  <h3>Image:</h3>
+  <img src="{{object.image.url}}" alt="" style="width: 100px;height: auto;">
+{% endblock body %}

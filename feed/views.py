@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from .models import Post
 
 class HomePageView (TemplateView):
@@ -13,5 +13,8 @@ class HomePageView (TemplateView):
 
     return context
 
+class PostDetailView (DetailView):
+  template_name = "detail.html"
+  model = Post
 
 # Create your views here.
